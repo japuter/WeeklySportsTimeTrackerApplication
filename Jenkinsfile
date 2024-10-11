@@ -8,8 +8,8 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Checkout code from GitHub
-                git credentialsId: '46a2d923-b2a1-4814-a043-34e8f6307adc', url: 'https://github.com/japuter/WeeklySportsTimeTrackerApplication'
+                // Checkout code from GitHub from the master branch
+                git branch: 'master', credentialsId: '46a2d923-b2a1-4814-a043-34e8f6307adc', url: 'https://github.com/japuter/WeeklySportsTimeTrackerApplication'
             }
         }
 
