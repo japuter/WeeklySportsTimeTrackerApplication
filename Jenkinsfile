@@ -39,20 +39,5 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'japuter') {
-                        docker.image('japuter/sports-time-tracker:latest').push('latest') // Replace with your Docker Hub repository
-                    }
-                }
-            }
-        }
-    }
-
-    post {
-        always {
-            // Ensure that cleanWs is inside a node block
-            node {
-                cleanWs()
-            }
-        }
-    }
-}
+                    docker.withRegistry('https://registry.hub.docker.com', 'DOCKER_HUB_CREDENTIALS') {
+                        docker.image('japuter/sports-time-tracker:latest').pu
