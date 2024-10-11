@@ -36,21 +36,4 @@ pipeline {
             }
         }
 
-        stage('Push Docker Image') {
-            steps {
-                script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'japuter') {
-                        docker.image('japuter/sports-time-tracker:latest').push('latest')
-                    }
-                }
-            }
-        }
-    }
-
-    post {
-        always {
-            // Clean up any workspace artifacts
-            cleanWs()
-        }
-    }
-}
+        stage('Push Dock
