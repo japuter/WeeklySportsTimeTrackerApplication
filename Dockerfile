@@ -1,4 +1,4 @@
-# Start with an official Ubuntu base image
+# Use the official Ubuntu base image
 FROM ubuntu:latest
 LABEL authors="jaspe"
 

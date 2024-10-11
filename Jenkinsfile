@@ -1,8 +1,3 @@
-FROM ubuntu:latest
-LABEL authors="jaspe"
-
-ENTRYPOINT ["top", "-b"]
-
 pipeline {
     agent any
 
@@ -36,7 +31,7 @@ pipeline {
             steps {
                 script {
                     // Build Docker image using Dockerfile
-                    docker.build("japuter/sports-time-tracker:latest") // Replace with your Docker Hub username
+                    docker.build("japuter/sports-time-tracker:latest")
                 }
             }
         }
@@ -44,8 +39,8 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-credentials') {
-                        docker.image('japuter/sports-time-tracker:latest').push('latest') // Replace with your Docker Hub repository
+                    docker.withRegistry('https://registry.hub.docker.com', 'japuter') {
+                        docker.image('japuter/sports-time-tracker:latest').push('latest')
                     }
                 }
             }
