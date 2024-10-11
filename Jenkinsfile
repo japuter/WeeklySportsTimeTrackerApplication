@@ -49,8 +49,10 @@ pipeline {
 
     post {
         always {
-            // Clean up workspace after build without a node block
-            cleanWs()
+            // Ensure cleanWs is inside a node block to access workspace context
+            node {
+                cleanWs()
+            }
         }
     }
 }
