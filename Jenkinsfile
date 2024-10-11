@@ -36,4 +36,22 @@ pipeline {
             }
         }
 
-        stage('Push Dock
+        stage('Push Docker Image') {   // Ensure that the full string is properly written
+            steps {
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com', 'japuter') {
+                        docker.image('japuter/sports-time-tracker:latest').push('latest') // Replace with your Docker Hub repository
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            node {
+                cleanWs()
+            }
+        }
+    }
+}
