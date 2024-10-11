@@ -40,4 +40,17 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'DOCKER_HUB_CREDENTIALS') {
-                        docker.image('japuter/sports-time-tracker:latest').pu
+                        docker.image('japuter/sports-time-tracker:latest').push('latest') // Replace with your Docker Hub repository
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            // Clean up workspace after build
+            cleanWs()
+        }
+    }
+}
