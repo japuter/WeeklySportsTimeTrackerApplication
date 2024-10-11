@@ -36,7 +36,7 @@ pipeline {
             }
         }
 
-        stage('Push Docker Image') {   // Ensure that the full string is properly written
+        stage('Push Docker Image') {
             steps {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'japuter') {
@@ -49,9 +49,8 @@ pipeline {
 
     post {
         always {
-            node {
-                cleanWs()
-            }
+            // Clean up workspace without needing a node block
+            cleanWs()
         }
     }
 }
